@@ -8,11 +8,11 @@ rescue Errno::ENOENT
 end
 
 def run(process)
-  system "#{process} start -f Procfile.dev-static"
+  system "#{process} start -f Procfile-static"
 rescue Errno::ENOENT
   warn <<~MSG
     ERROR:
-    Please ensure `Procfile.dev-static` exists in your project!
+    Please ensure `Procfile-static` exists in your project!
   MSG
   exit!
 end
