@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'cat_motivation', to: 'cat_motivation#index'
 
   # member
-  patch 'members/:id/update', to: 'members#update'
+  patch 'members/:id', to: 'members#update'
 
   # auth
   get 'auth', to: 'auth#authenticate'
