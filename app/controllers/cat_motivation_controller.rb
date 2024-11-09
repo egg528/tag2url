@@ -5,7 +5,7 @@ class CatMotivationController < ApplicationController
   layout "default"
 
   def index
-    @hello_world_props = { name: "우석" }
+    @props = { member_id: @member.id, member_nickname: @member.nickname }
   end
 
   private

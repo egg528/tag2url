@@ -1,23 +1,24 @@
-import React from 'react';
-import * as style from './CatMotivation.module.css';
-import PropTypes from "prop-types";
+import React, {useState} from 'react';
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 import SignUp from "./SignUp";
+import PropTypes from "prop-types";
 
-const Home = () => {
+const Home = ({ member_id, member_nickname }) => {
+    const [id, ] = useState(member_id)
+    const [nickname, setNickname] = useState(member_nickname)
+
 
     return (
-        <div className={style['app-container']}>
-            <img className={style['cat-image']} src="/assets/cat.png" alt="Cat"/>
-            <p className={style.title}>냥기부여</p>
-            <div className={style.text}>
-                <p>냥이가 전해주는 1일 1 동기부여</p>
-            </div>
-        </div>
-    );
+        <BrowserRouter>
+            <Routes>
+                <Route path="/cat_motivation" element={<SignUp id={id} nickname={nickname} setNickname={setNickname}/>} />
+            </Routes>
+        </BrowserRouter>
+    )
 };
 
-SignUp.propTypes = {
-    name: PropTypes.string.isRequired, // this is passed from the Rails view
-};
+Home.propTypes = {
+    member_id: PropTypes.number
+}
 
 export default Home;

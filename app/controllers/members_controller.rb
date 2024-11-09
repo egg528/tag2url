@@ -12,7 +12,7 @@ class MembersController < ApplicationController
   private
 
   def set_member
-    @member = Member.find_by(id: params[:id], access_key: cookies[:access_token])
+    @member = Member.find_by(id: params[:id], access_token: cookies[:access_token])
     unless @member
       render json: { error: 'Member not found' }, status: :not_found
     end
