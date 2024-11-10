@@ -5,13 +5,13 @@ class CatMotivationController < ApplicationController
   layout "default"
 
   def index
-    select_quote_type = @member.selections.first&.quote_type
+    selected_quote_type = @member.selections.first&.quote_type
 
-    if select_quote_type.blank?
+    if selected_quote_type.blank?
       return @props = {
         member_id: @member.id,
         member_nickname: @member.nickname,
-        select_quote_type: '',
+        selected_quote_type: '',
         quote: '',
       }
     end
@@ -22,7 +22,7 @@ class CatMotivationController < ApplicationController
     @props = {
       member_id: @member.id,
       member_nickname: @member.nickname,
-      select_quote_type: @member.selections.first&.quote_type,
+      selected_quote_type: @member.selections.first&.quote_type,
       quote: `#{quote.content}-#{quote.author}`
     }
   end
