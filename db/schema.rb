@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_11_10_070146) do
+ActiveRecord::Schema[7.1].define(version: 2024_11_10_070922) do
   create_table "members", force: :cascade do |t|
     t.string "access_token"
     t.string "nickname"
@@ -21,14 +21,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_10_070146) do
   create_table "quotes", force: :cascade do |t|
     t.string "content"
     t.string "author"
-    t.string "type"
+    t.string "quote_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "selections", force: :cascade do |t|
     t.integer "member_id", null: false
-    t.string "type"
+    t.string "quote_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["member_id"], name: "index_selections_on_member_id"
