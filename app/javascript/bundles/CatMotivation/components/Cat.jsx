@@ -2,7 +2,7 @@ import React from 'react';
 import * as style from './CatMotivation.module.css';
 import PropTypes from "prop-types";
 
-const Cat = ({ bg, title, headerText , footerText, buttonText, onClick }) => {
+const Cat = ({ bg = 'green', title = '', headerText = [] , footerText = [], buttonText = '', onClick = () => {} }) => {
     let containerStyleName = 'greenContainer';
 
     if (bg === 'brown') {
@@ -39,14 +39,6 @@ Cat.propTypes = {
     footerText: PropTypes.array,
     buttonText: PropTypes.string,
     onClick: PropTypes.func,
-};
-
-Cat.defaultProps = {
-    bg: 'green',
-    headerText: [],
-    title: '',
-    footerText: [],
-    buttonText: '',
 };
 
 export default Cat;
