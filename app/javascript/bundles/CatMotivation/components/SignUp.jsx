@@ -2,9 +2,12 @@ import React, { useEffect, useState } from 'react';
 import Cat from './Cat';
 import NameForm from './NameForm'
 import PropTypes from "prop-types";
+import {useNavigate} from "react-router-dom";
 
-const SignUp = ({ id, nickname, setNickname }) => {
+const SignUp = ({ id = 0, nickname = '', setNickname = () => {}}) => {
     const [level, setLevel] = useState(0);
+    const navigate = useNavigate();
+
     const addLevel = () => {
         setLevel(prevLevel => prevLevel + 1);
     }
@@ -18,7 +21,7 @@ const SignUp = ({ id, nickname, setNickname }) => {
         if (level === 0 || level === 2 || level === 3 || level === 6 || level === 7) {
             const timer = setTimeout(() => {
                 addLevel();
-            }, 1500);
+            }, 500);
 
             return () => clearTimeout(timer);
         }
@@ -31,8 +34,7 @@ const SignUp = ({ id, nickname, setNickname }) => {
         case 0:
             return <Cat title={'냥기부여'} footerText={['냥이가 전해주는 1일 1 동기부여']}/>
         case 1:
-            return <Cat headerText={['안녕하세요.', '제 이름은 동키에요.']} buttonText={'안녕 동키야'}
-                        onClick={addLevel}/>
+            return <Cat headerText={['안녕하세요.', '제 이름은 동키에요.']} buttonText={'안녕 동키야'} onClick={addLevel}/>
         case 2:
             return <Cat headerText={['만나서 반가워요.']}/>
         case 3:
@@ -48,7 +50,7 @@ const SignUp = ({ id, nickname, setNickname }) => {
         case 8:
             return <Cat bg={'brown'} headerText={[`${nickname}님이 고른 키워드에`, '따라서 제 성격이 조금씩 달라져요 ㅎㅎ.', '괜찮겠죠?']} buttonText={'응! 괜찮아'} onClick={addLevel}/>
         case 9:
-            return <Cat bg={'brown'} headerText={['다행이네요! 맞다, 키워드는 하루에 1번만', '선택할 수 있다는 것을 꼭 기억해주세요.']} buttonText={'오케이'} onClick={() => {}}/>
+            return <Cat bg={'brown'} headerText={['다행이네요! 맞다, 키워드는 하루에 1번만', '선택할 수 있다는 것을 꼭 기억해주세요.']} buttonText={'오케이'} onClick={() => {navigate('/cat_motivation/selection')}}/>
         default:
             return <Cat/>
     }

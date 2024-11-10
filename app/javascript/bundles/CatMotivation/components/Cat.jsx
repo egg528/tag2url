@@ -3,7 +3,7 @@ import * as style from './CatMotivation.module.css';
 import PropTypes from "prop-types";
 
 const Cat = ({ bg = 'green', title = '', headerText = [] , footerText = [], buttonText = '', onClick = () => {} }) => {
-    let containerStyleName = 'greenContainer';
+    let containerStyleName = `${bg}Container`;
 
     if (bg === 'brown') {
         containerStyleName = 'brownContainer'

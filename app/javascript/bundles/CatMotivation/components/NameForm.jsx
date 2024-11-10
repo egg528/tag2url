@@ -4,7 +4,8 @@ import PropTypes from "prop-types";
 
 const NameForm = ({ id, onSuccess }) => {
     const inputRef = useRef(null);
-    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    const csrfToken = document.querySelector('meta[name="csrf-token"]')
+                                     .getAttribute('content');
 
     const handleSubmit = async (event) => {
         event.preventDefault();

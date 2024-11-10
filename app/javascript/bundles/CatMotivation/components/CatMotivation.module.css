@@ -1,3 +1,29 @@
+.softContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-image: url("/app/javascript/images/soft-bg.png");
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    position: relative;
+}
+
+.hardContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-image: url("/app/javascript/images/hard-bg.png");
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    position: relative;
+}
+
 .greenContainer {
     display: flex;
     flex-direction: column;
@@ -66,6 +92,17 @@
     transform: translateY(-50%);
 }
 
+.sittingCatImage {
+    width: 80vw;
+    height: auto;
+    max-width: 480px;
+    max-height: 345px;
+    margin-bottom: 16px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
 .input {
     width: 80%;
     height: 30px;
@@ -109,4 +146,36 @@
     width: 80%;
     margin-bottom: 16px;
     font-size: 16px;
+}
+
+.tasteButtons {
+    position: absolute;
+    top: 65%;
+    gap: 20px;
+    margin-bottom: 20px;
+
+}
+
+.sittingCatImage {
+    width: 80vw;
+    height: auto;
+    max-width: 480px;
+    max-height: 345px;
+    margin-bottom: 16px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.tasteImage {
+    width: 100px; /* 이미지 크기 조정 */
+    height: auto;
+    border: 3px solid transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: border-color 0.3s;
+}
+
+.tasteImage.selected {
+    opacity: 70%;
 }

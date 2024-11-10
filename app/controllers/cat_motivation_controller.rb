@@ -16,7 +16,7 @@ class CatMotivationController < ApplicationController
     end
 
     # TODO: 명언 선정 방식 수정 필요
-    quote = Quote.where(quote_type: today_select_type).order('RANDOM()').first
+    quote = Quote.where(quote_type: @selection.quote_type).order('RANDOM()').first
 
     @props = {
       member_id: @member.id,
@@ -37,6 +37,6 @@ class CatMotivationController < ApplicationController
       render json: { error: 'Unauthorized' }, status: :unauthorized
     end
 
-    @selection = @member.selections.where(created_at: Date.today.all_day)
+    @selection = @member.selections.where(created_at: Date.today.all_day).first
   end
 end
