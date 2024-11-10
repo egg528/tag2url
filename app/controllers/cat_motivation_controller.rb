@@ -5,14 +5,13 @@ class CatMotivationController < ApplicationController
   layout "default"
 
   def index
-    selected_quote_type = @member.selections.first&.quote_type
-
-    if selected_quote_type.blank?
+    if @selection.blank?
       return @props = {
         member_id: @member.id,
         member_nickname: @member.nickname,
         selected_quote_type: '',
-        quote: '',
+        quote_content: '',
+        quote_author: ''
       }
     end
 
@@ -22,8 +21,9 @@ class CatMotivationController < ApplicationController
     @props = {
       member_id: @member.id,
       member_nickname: @member.nickname,
-      selected_quote_type: @member.selections.first&.quote_type,
-      quote: `#{quote.content}-#{quote.author}`
+      selected_quote_type: @selection.quote_type,
+      quote_content: quote.content,
+      quote_author: quote.author
     }
   end
 
@@ -31,10 +31,12 @@ class CatMotivationController < ApplicationController
 
   def authenticate_member
     token = cookies[:access_token]
-    @member = Member.includes(:selections).where(selections: {created_at: Date.today.all_day}).find_by(access_token: token)
+    @member = Member.find_by(access_token: token)
 
     unless @member
       render json: { error: 'Unauthorized' }, status: :unauthorized
     end
+
+    @selection = @member.selections.where(created_at: Date.today.all_day)
   end
 end
